@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recomendador de Películas</title>
+
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            background-color: rgb(78, 182, 223);
+            padding: 20px;
+        }
+   
+        .caja {
+            background: rgb(152, 225, 247);
+            padding: 15px;
+            border-radius: 10px;
+        }
+
+        select, button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+        }
+
+        .pelicula {
+            background: #16a2c5;
+            padding: 10px;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+        .imagen{
+            height: 400px;
+            width: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>🎬 Recomendador de Películas</h1>
+
+    <div class="caja">
+        <label for="genero">Elige un género:</label>
+        <select id="genero">
+            <option value="">-- Selecciona --</option>
+            <option value="accion">Acción</option>
+            <option value="comedia">Comedia</option>
+            <option value="drama">Drama</option>
+            <option value="terror">Terror</option>
+        </select>
+
+        <button onclick="mostrarPeliculas()">Mostrar Películas</button>
+    </div>
+
+    <div id="resultado"></div>
+    <img src="" alt="">
+
+    <script>
+        const peliculas = {
+            accion: ['<img class="imagen" src="jhonwoc.jpg" alt="">', '<img class="imagen" src="madmax.jpg" alt="">', '<img class="imagen" src="misionimpochible.jpg" alt="">'],
+            comedia: ['<img class="imagen" src="soncomoniños2.jpg" alt="">', '<img class="imagen" src="deadpool2.jpg" alt="">', '<img class="imagen" src="nocheenmuseo.jpg" alt="">'],
+            drama: [ '<img class="imagen" src="LaLaLand.jpg" alt="">', '<img class="imagen" src="titanic.jpg" alt="">', '<img class="imagen" src="eldiariodenoa.jpg" alt="">'],
+            terror: ['<img class="imagen" src="it2.jpg" alt="It">', '<img class="imagen" src="conjuro.jpg" alt="">', '<img class="imagen" src="actividad para norma.jpg" alt="">']
+        };
+
+        function mostrarPeliculas() {
+            let genero = document.getElementById("genero").value;
+            let resultado = document.getElementById("resultado");
+
+            if (genero === "") {
+                alert("Tenés que seleccionar un género primero");
+                return;
+            }
+
+            resultado.innerHTML = ""; 
+
+            peliculas[genero].forEach((pelicula) => {
+                resultado.innerHTML += `<div class="pelicula"> ${pelicula}
+                    </div>`;
+            });
+        }
+    </script>
+
+</body>
+</html>
